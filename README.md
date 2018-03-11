@@ -1,5 +1,5 @@
 #LZW - Encoding and Decoding
-
+#########################################
 Introduction
 The Lempel–Ziv–Welch (LZW) algorithm is a lossless data compression algorithm. LZW is an adaptive compression algorithm that does not assume prior knowledge of the input data distribution. This algorithm works well when the input data is sufficiently large and there is redundancy in the data. Two examples of commonly used file formats that use LZW compression are the GIF image format served from websites and the TIFF image format. LZW compression is also suitable for compressing text files, and is the algorithm in the compress Unix file compression utility.
 This algorithm has two steps:
@@ -17,3 +17,4 @@ Decompression works in the reverse fashion to compression, converting integer co
 Here is how it works. Mirroring the process carried out by the encoder, every time the decoder extracts a string from the dictionary using a code, it adds a string to the dictionary, consisting of the previous string and the first character of the new string, with an updated code index. So the decoder is adding strings to the dictionary one step behind the encoder.
 The LZW decoder first reads an input code (integer) from the encoded sequence, looks up the code in the dictionary by using it as an index, and outputs the string associated with the code. Thereafter, the decoder reads in a new code, finds the new string indexed by this code, and outputs it. The first character of this new string is concatenated to the previously decoded string. This new concatenation is added to the dictionary with an incremented code (simulating how the strings were added during compression). The decoded new string then becomes the previous string, and the process repeats.
 When the decoder receives a code that is not already in its dictionary, it can be shown that the new string corresponding to this code consists of the previously decoded string with the first character of the previously decoded string appended. Each time it reads in a code that does not exist in the dictionary, it must add the code and the corresponding string to the dictionary.
+######################################
